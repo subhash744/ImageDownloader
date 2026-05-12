@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Image Downloader – Right Click Save as JPG PNG | Free Chrome Extension</title>
+<meta name="description" content="Download any image from any website as JPG or PNG with one right-click. Free Chrome extension. No signup. No bloat. Works on every site. Alternative to Fatkun, Imageye, Download All Images."/>
+<meta name="keywords" content="image downloader chrome extension, download image as png, download image as jpg, right click download image, save image as png chrome, image saver extension, free image downloader, download web images, convert image to jpg, convert image to png, alternative to fatkun, alternative to imageye, alternative to download all images"/>
+<meta name="author" content="IndieEvolve"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://yoursite.com/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://yoursite.com/"/>
+<meta property="og:title" content="Image Downloader – Right Click Save as JPG PNG"/>
+<meta property="og:description" content="Download any image from any website as JPG or PNG instantly. Free Chrome extension. No signup. Works on Google, Pinterest, Reddit, Instagram and everywhere else."/>
+<meta property="og:image" content="https://yoursite.com/marquee_promo_1400x560.png"/>
+<meta property="og:image:width" content="1400"/>
+<meta property="og:image:height" content="560"/>
+<meta property="og:site_name" content="Image Downloader"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Image Downloader – Right Click Save as JPG PNG"/>
+<meta name="twitter:description" content="Download any image as JPG or PNG with one right-click. Free Chrome extension. No signup."/>
+<meta name="twitter:image" content="https://yoursite.com/marquee_promo_1400x560.png"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Image Downloader – Right Click Save as JPG PNG","applicationCategory":"BrowserApplication","operatingSystem":"Chrome","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"A free Chrome extension that lets you right-click any image on any website and download it as JPG or PNG instantly. No signup required. Works on all websites including Google, Pinterest, Reddit, Instagram, Unsplash, and Amazon.","featureList":["Right-click context menu download","Save images as PNG format","Save images as JPG format","Auto-numbering file names","Custom file prefix","Works on all websites","No login required","100% private - no data collected"],"screenshot":"https://yoursite.com/marquee_promo_1400x560.png","url":"https://yoursite.com/","downloadUrl":"https://chrome.google.com/webstore/detail/YOUR_EXTENSION_ID"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I download an image as PNG or JPG in Chrome?","acceptedAnswer":{"@type":"Answer","text":"Install Image Downloader extension for Chrome. Then right-click any image on any website and select 'Download as PNG' or 'Download as JPG'. The image saves instantly to your Downloads folder."}},{"@type":"Question","name":"How do I save a WebP image as JPG or PNG?","acceptedAnswer":{"@type":"Answer","text":"Many websites serve images in WebP format which is hard to use elsewhere. Image Downloader Chrome extension automatically converts WebP images to JPG or PNG when you download them — just right-click and choose your format."}},{"@type":"Question","name":"Is Image Downloader extension free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Image Downloader is completely free with no premium tier, no ads, and no upsells."}},{"@type":"Question","name":"Does Image Downloader collect my data?","acceptedAnswer":{"@type":"Answer","text":"No. Image Downloader collects zero personal data. All image processing happens locally in your browser. No data is sent to any server."}},{"@type":"Question","name":"What is a good alternative to Fatkun Batch Download Image?","acceptedAnswer":{"@type":"Answer","text":"Image Downloader is a simpler alternative to Fatkun. Right-click any single image and save it as PNG or JPG instantly — no extra steps, no confusing settings."}},{"@type":"Question","name":"What websites does Image Downloader work on?","acceptedAnswer":{"@type":"Answer","text":"Image Downloader works on all websites including Google Images, Pinterest, Reddit, Instagram, Twitter/X, Unsplash, Amazon, Facebook, and any other site with images."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --o:#FF6B00;--o2:#FF8C33;--o3:#FFF0E6;
+  --k:#0C0C0C;--w:#FFFFFF;
+  --g:#F6F5F2;--g2:#EEEDE9;
+  --mu:#999;--bd:rgba(0,0,0,0.08);
+  --fd:'Bricolage Grotesque',sans-serif;
+  --fb:'DM Sans',sans-serif;
+  --r:16px;--r2:24px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--fb);background:var(--w);color:var(--k);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* GRAIN */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23g)'/%3E%3C/svg%3E");opacity:.03;pointer-events:none;z-index:9999}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,80px);background:rgba(255,255,255,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--bd)}
+.n-logo{display:flex;align-items:center;gap:9px;text-decoration:none}
+.n-icon{width:32px;height:32px;background:var(--o);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.n-icon svg{width:17px;height:17px}
+.n-name{font-family:var(--fd);font-size:14px;font-weight:800;color:var(--k);letter-spacing:-.2px}
+.n-links{display:flex;align-items:center;gap:28px}
+.n-links a{font-size:13px;font-weight:600;color:var(--mu);text-decoration:none;transition:color .15s}
+.n-links a:hover{color:var(--k)}
+.n-cta{background:var(--o);color:#fff;text-decoration:none;border-radius:99px;padding:9px 20px;font-size:13px;font-weight:700;font-family:var(--fb);transition:background .15s,transform .15s;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.n-cta:hover{background:#e55f00;transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:calc(100vh - 60px);display:grid;grid-template-columns:1fr 480px;align-items:center;gap:60px;padding:80px clamp(20px,5vw,80px);max-width:1280px;margin:0 auto}
+.h-badge{display:inline-flex;align-items:center;gap:8px;background:var(--o3);border:1.5px solid rgba(255,107,0,.18);border-radius:99px;padding:5px 14px;font-size:11px;font-weight:700;color:var(--o);letter-spacing:.07em;text-transform:uppercase;margin-bottom:24px}
+.h-dot{width:6px;height:6px;background:var(--o);border-radius:50%;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}}
+h1{font-family:var(--fd);font-size:clamp(44px,5.5vw,78px);font-weight:800;line-height:.97;letter-spacing:-2.5px;color:var(--k);margin-bottom:22px}
+h1 .acc{color:var(--o)}
+.h-sub{font-size:17px;line-height:1.65;color:#5a5a5a;max-width:500px;margin-bottom:36px}
+.h-btns{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:44px}
+.btn-main{background:var(--o);color:#fff;text-decoration:none;border-radius:14px;padding:15px 26px;font-size:15px;font-weight:700;display:inline-flex;align-items:center;gap:8px;transition:background .15s,transform .15s,box-shadow .15s;box-shadow:0 6px 28px rgba(255,107,0,.38)}
+.btn-main:hover{background:#e55f00;transform:translateY(-2px);box-shadow:0 10px 36px rgba(255,107,0,.44)}
+.btn-ghost{font-size:14px;font-weight:600;color:var(--k);text-decoration:none;opacity:.45;transition:opacity .15s;display:inline-flex;align-items:center;gap:4px}
+.btn-ghost:hover{opacity:.9}
+.h-trust{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.h-trust-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--mu);font-weight:600}
+.h-trust-item svg{flex-shrink:0}
+
+/* HERO VISUAL */
+.h-visual{position:relative}
+.browser{background:var(--g);border-radius:20px;border:1px solid var(--bd);box-shadow:0 28px 80px rgba(0,0,0,.10),0 4px 12px rgba(0,0,0,.05);overflow:hidden;animation:levitate 6s ease-in-out infinite}
+@keyframes levitate{0%,100%{transform:translateY(0) rotate(-.5deg)}50%{transform:translateY(-12px) rotate(.5deg)}}
+.b-bar{background:#E8E8E8;padding:11px 14px;display:flex;align-items:center;gap:10px}
+.b-dots{display:flex;gap:5px}
+.b-dots i{width:9px;height:9px;border-radius:50%;display:block}
+.b-dots i:nth-child(1){background:#FF5F57}
+.b-dots i:nth-child(2){background:#FEBC2E}
+.b-dots i:nth-child(3){background:#28C840}
+.b-url{flex:1;background:#fff;border-radius:5px;padding:4px 10px;font-size:11px;color:var(--mu)}
+.b-body{background:#fff;padding:24px;position:relative;min-height:280px}
+.img-mosaic{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:7px;height:230px}
+.im{border-radius:9px;overflow:hidden}
+.im:nth-child(1){background:linear-gradient(135deg,#ffd4b0,#ff6b00)}
+.im:nth-child(2){background:linear-gradient(135deg,#b0d4ff,#3a7bd5)}
+.im:nth-child(3){background:linear-gradient(135deg,#b0ffd4,#27ae60);grid-row:span 2}
+.im:nth-child(4){background:linear-gradient(135deg,#ffd4f0,#e056b0)}
+.im:nth-child(5){background:linear-gradient(135deg,#d4c5ff,#7c4ae2)}
+
+/* context menu */
+.ctx{position:absolute;top:50%;left:50%;transform:translate(-5%,-50%);background:#fff;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,.18);border:1px solid rgba(0,0,0,.07);padding:5px;min-width:205px;z-index:10;animation:ctxIn .5s cubic-bezier(.34,1.56,.64,1) .6s both}
+@keyframes ctxIn{from{opacity:0;transform:translate(-5%,-50%) scale(.88)}to{opacity:1;transform:translate(-5%,-50%) scale(1)}}
+.ci{padding:9px 12px;border-radius:7px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:7px;cursor:default}
+.ci.a{background:var(--o);color:#fff;margin-bottom:3px}
+.ci.b{background:var(--k);color:#fff}
+.c-div{height:1px;background:rgba(0,0,0,.07);margin:3px 0}
+
+/* SECTIONS base */
+.sec{padding:100px clamp(20px,5vw,80px)}
+.inn{max-width:1100px;margin:0 auto}
+.s-tag{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--o);margin-bottom:12px}
+h2{font-family:var(--fd);font-size:clamp(34px,4vw,58px);font-weight:800;letter-spacing:-2px;line-height:1.02;margin-bottom:18px}
+.s-sub{font-size:17px;color:#666;line-height:1.65;max-width:560px;margin-bottom:56px}
+
+/* HOW */
+.how-sec{background:var(--g)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{background:#fff;border-radius:var(--r2);padding:36px 28px;border:1px solid var(--bd);transition:transform .2s,box-shadow .2s}
+.step:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(0,0,0,.08)}
+.s-num{width:48px;height:48px;border-radius:13px;background:var(--o);color:#fff;font-family:var(--fd);font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.step:nth-child(2) .s-num{background:var(--k)}
+.step h3{font-family:var(--fd);font-size:19px;font-weight:800;margin-bottom:8px;letter-spacing:-.3px}
+.step p{font-size:14px;color:#666;line-height:1.65}
+
+/* FEATURES */
+.feats{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fc{background:var(--g);border-radius:var(--r2);padding:32px;border:1px solid var(--bd);transition:transform .2s,box-shadow .2s}
+.fc:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(0,0,0,.07)}
+.fc.big{grid-column:span 2;background:var(--o);border:none}
+.fc.big h3,.fc.big p{color:#fff}
+.fc.big .fi{background:rgba(255,255,255,.18);color:#fff}
+.fi{width:42px;height:42px;background:var(--o3);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--o);font-size:19px;margin-bottom:16px}
+.fc h3{font-family:var(--fd);font-size:19px;font-weight:800;margin-bottom:7px;letter-spacing:-.3px}
+.fc p{font-size:14px;color:#666;line-height:1.65}
+.fc.big p{color:rgba(255,255,255,.82)}
+
+/* COMPARE */
+.cmp-sec{background:var(--k)}
+.cmp-sec h2,.cmp-sec .s-sub{color:#fff}
+.cmp-sec .s-sub{color:rgba(255,255,255,.45)}
+.cmp-sec .s-tag{color:var(--o)}
+table{width:100%;border-collapse:collapse;margin-top:44px;font-size:14px}
+thead th{padding:14px 18px;text-align:left;font-family:var(--fd);font-weight:800;font-size:11px;letter-spacing:.07em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.35)}
+thead th.uth{color:var(--o)}
+tbody td{padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.6);vertical-align:middle}
+tbody tr:hover td{background:rgba(255,255,255,.03)}
+tbody td:first-child{font-weight:600;color:#fff;font-size:14px}
+td.y{color:var(--o);font-size:17px;font-weight:900}
+td.n{color:rgba(255,255,255,.18);font-size:17px}
+td.uc{background:rgba(255,107,0,.09)}
+
+/* ALTERNATIVES */
+.alt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-top:44px}
+.ac{background:var(--g);border-radius:14px;padding:18px;border:1px solid var(--bd);transition:transform .15s,box-shadow .15s}
+.ac:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.07)}
+.a-tag{display:inline-block;background:var(--o3);color:var(--o);font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:2px 8px;border-radius:99px;margin-bottom:8px}
+.a-name{font-weight:700;font-size:13px;color:var(--k);margin-bottom:3px}
+.a-why{font-size:12px;color:var(--mu);line-height:1.5}
+
+/* FAQ */
+.faq-sec{background:var(--g)}
+.faq-list{max-width:700px;margin-top:44px}
+.fi-wrap{border-bottom:1px solid var(--g2)}
+.fq{width:100%;background:none;border:none;padding:20px 0;text-align:left;font-family:var(--fd);font-size:17px;font-weight:800;color:var(--k);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;letter-spacing:-.3px}
+.fq-icon{width:26px;height:26px;background:var(--o3);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--o);font-size:17px;font-weight:900;flex-shrink:0;transition:transform .2s,background .2s}
+.fi-wrap.open .fq-icon{background:var(--o);color:#fff;transform:rotate(45deg)}
+.fa{font-size:15px;line-height:1.7;color:#5a5a5a;max-height:0;overflow:hidden;transition:max-height .35s ease,padding-bottom .2s}
+.fi-wrap.open .fa{max-height:300px;padding-bottom:20px}
+
+/* CTA */
+.cta-sec{background:var(--o);padding:120px clamp(20px,5vw,80px);text-align:center;position:relative;overflow:hidden}
+.cta-sec::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:rgba(255,255,255,.06);border-radius:50%}
+.cta-sec h2{color:#fff;max-width:620px;margin:0 auto 16px;position:relative}
+.cta-sec p{color:rgba(255,255,255,.78);font-size:17px;margin-bottom:36px;position:relative}
+.btn-wh{background:#fff;color:var(--o);text-decoration:none;border-radius:14px;padding:17px 34px;font-size:16px;font-weight:800;display:inline-flex;align-items:center;gap:8px;transition:transform .15s,box-shadow .15s;box-shadow:0 6px 28px rgba(0,0,0,.16);position:relative}
+.btn-wh:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(0,0,0,.22)}
+
+/* FOOTER */
+footer{background:var(--k);padding:36px clamp(20px,5vw,80px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+footer p{font-size:12px;color:rgba(255,255,255,.3)}
+.f-links{display:flex;gap:22px;flex-wrap:wrap}
+.f-links a{font-size:12px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .15s}
+.f-links a:hover{color:var(--o)}
+
+/* ANIM */
+.fu{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}
+.fu.vis{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:auto;padding:60px clamp(20px,5vw,40px)}
+  .h-visual{display:none}
+  .steps{grid-template-columns:1fr}
+  .feats{grid-template-columns:1fr}
+  .fc.big{grid-column:span 1}
+  nav .n-links{display:none}
+}
+@media(max-width:600px){
+  table{display:block;overflow-x:auto}
+  footer{flex-direction:column;text-align:center}
+  .f-links{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="n-logo" aria-label="Image Downloader Home">
+    <div class="n-icon">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 4v11M9 12l3 3 3-3" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5 19h14" stroke="white" stroke-width="2.3" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <span class="n-name">Image Downloader</span>
+  </a>
+  <div class="n-links">
+    <a href="#how-it-works">How it works</a>
+    <a href="#features">Features</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <a href="https://chrome.google.com/webstore/detail/YOUR_EXTENSION_ID" class="n-cta" target="_blank" rel="noopener">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="white"/></svg>
+    Add to Chrome — Free
+  </a>
+</nav>
+
+<main>
+<!-- HERO -->
+<section style="background:var(--w)">
+<div class="hero">
+  <div>
+    <div class="h-badge"><span class="h-dot"></span>Free Chrome Extension</div>
+    <h1>Download any<br/>image as <span class="acc">PNG</span><br/>or <span class="acc">JPG</span> instantly</h1>
+    <p class="h-sub">Right-click any image on any website. Pick your format. File saves to your Downloads folder in one second. No submenu. No account. No bloat.</p>
+    <div class="h-btns">
+      <a href="https://chrome.google.com/webstore/detail/YOUR_EXTENSION_ID" class="btn-main" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 4v11M9 12l3 3 3-3" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 19h14" stroke="white" stroke-width="2.3" stroke-linecap="round"/></svg>
+        Add to Chrome — It's Free
+      </a>
+      <a href="#how-it-works" class="btn-ghost">See how it works →</a>
+    </div>
+    <div class="h-trust">
+      <div class="h-trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FF6B00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        No login required
+      </div>
+      <div class="h-trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FF6B00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Zero data collected
+      </div>
+      <div class="h-trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FF6B00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        100% free forever
+      </div>
+    </div>
+  </div>
+
+  <div class="h-visual" aria-hidden="true">
+    <div class="browser">
+      <div class="b-bar">
+        <div class="b-dots"><i></i><i></i><i></i></div>
+        <div class="b-url">unsplash.com/photos</div>
+      </div>
+      <div class="b-body">
+        <div class="img-mosaic">
+          <div class="im"></div>
+          <div class="im"></div>
+          <div class="im"></div>
+          <div class="im"></div>
+          <div class="im"></div>
+        </div>
+        <div class="ctx" role="menu" aria-label="Context menu">
+          <div class="ci a" role="menuitem">⬇&nbsp; Download as PNG</div>
+          <div class="c-div"></div>
+          <div class="ci b" role="menuitem">⬇&nbsp; Download as JPG</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SITES STRIP -->
+<div style="background:var(--g);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:18px clamp(20px,5vw,80px)">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+    <span style="font-size:12px;font-weight:700;color:var(--mu);margin-right:6px;text-transform:uppercase;letter-spacing:.07em">Works on</span>
+    <span style="font-size:13px;font-weight:600;color:#555;background:#fff;border:1px solid var(--bd);border-radius:99px;padding:4px 12px">Google Images</span>
+    <span style="font-size:13px;font-weight:600;color:#555;background:#fff;border:1px solid var(--bd);border-radius:99px;padding:4px 12px">Pinterest</span>
+    <span style="font-size:13px;font-weight:600;color:#555;background:#fff;border:1px solid var(--bd);border-radius:99px;padding:4px 12px">Reddit</span>
+    <span style="font-size:13px;font-weight:600;color:#555;background:#fff;border:1px solid var(--bd);border-radius:99px;padding:4px 12px">Instagram</span>
+    <span style="font-size:13px;font-weight:600;color:#555;background:#fff;border:1px solid var(--bd);border-radius:99px;padding:4px 12px">Twitter / X</span>
+    <span style="font-size:13px;font-weight:600;color:#555;background:#fff;border:1px solid var(--bd);border-radius:99px;padding:4px 12px">Unsplash</span>
+    <span style="font-size:13px;font-weight:600;color:#555;background:#fff;border:1px solid var(--bd);border-radius:99px;padding:4px 12px">Amazon</span>
+    <span style="font-size:13px;font-weight:600;color:var(--o);background:var(--o3);border:1px solid rgba(255,107,0,.2);border-radius:99px;padding:4px 12px">+ everywhere else</span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="sec how-sec" id="how-it-works">
+<div class="inn">
+  <div class="s-tag">How it works</div>
+  <h2>Three steps.<br/>One second.</h2>
+  <p class="s-sub">No complex UI. No batch configuration. No popup to open first. Just right-click and download.</p>
+  <div class="steps">
+    <article class="step fu">
+      <div class="s-num">1</div>
+      <h3>Right-click any image</h3>
+      <p>Right-click on any image on any website — Google Images, Pinterest, Reddit, Instagram, Unsplash, Amazon — anywhere at all.</p>
+    </article>
+    <article class="step fu" style="transition-delay:.1s">
+      <div class="s-num" style="background:var(--k)">2</div>
+      <h3>Pick your format</h3>
+      <p>Select <strong>Download as PNG</strong> or <strong>Download as JPG</strong> directly from the context menu. No submenu. One click.</p>
+    </article>
+    <article class="step fu" style="transition-delay:.2s">
+      <div class="s-num">3</div>
+      <h3>File saves instantly</h3>
+      <p>The image is converted and saved to your Downloads folder immediately. No popups. No confirmation dialogs. No waiting.</p>
+    </article>
+  </div>
+</div>
+</section>
+
+<!-- FEATURES -->
+<section class="sec" id="features">
+<div class="inn">
+  <div class="s-tag">Features</div>
+  <h2>Everything you need.<br/>Nothing you don't.</h2>
+  <p class="s-sub">Built for people who want to save an image without fighting their browser.</p>
+  <div class="feats">
+    <article class="fc big fu">
+      <div class="fi">⚡</div>
+      <h3>Instant format conversion — PNG or JPG</h3>
+      <p>Websites serve images in WebP, AVIF, HEIC, and other formats you can't easily open. Image Downloader automatically converts any image to PNG or JPG locally in your browser — no external upload, no third-party service, no waiting.</p>
+    </article>
+    <article class="fc fu">
+      <div class="fi">🎛</div>
+      <h3>Your format, your choice</h3>
+      <p>Set PNG or JPG once in the extension popup. The right-click menu reflects your choice instantly. Switch formats anytime with one click.</p>
+    </article>
+    <article class="fc fu">
+      <div class="fi">📁</div>
+      <h3>Smart file naming</h3>
+      <p>Auto-number files as image1, image2, image3 with a custom prefix — or keep the original URL filename. Toggle it in the popup.</p>
+    </article>
+    <article class="fc fu">
+      <div class="fi">🔒</div>
+      <h3>100% private</h3>
+      <p>No accounts. No analytics. No tracking. Everything runs inside your browser. Nothing leaves your device. Ever.</p>
+    </article>
+    <article class="fc fu">
+      <div class="fi">🌐</div>
+      <h3>Works everywhere</h3>
+      <p>Any website. Any image. If you can see it in Chrome, you can download it with Image Downloader in your chosen format.</p>
+    </article>
+  </div>
+</div>
+</section>
+
+<!-- COMPARISON -->
+<section class="sec cmp-sec" id="comparison">
+<div class="inn">
+  <div class="s-tag">Comparison</div>
+  <h2 style="color:#fff">Why switch to<br/><span style="color:var(--o)">Image Downloader?</span></h2>
+  <p class="s-sub">Other extensions are bloated, complex, broken, or track you. We do one thing, simply.</p>
+  <table role="table" aria-label="Extension comparison">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th class="uth">Image Downloader</th>
+        <th>Fatkun</th>
+        <th>Imageye</th>
+        <th>Download All Images</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Right-click single image</td><td class="y uc">✓</td><td class="n">✗</td><td class="y">✓</td><td class="n">✗</td></tr>
+      <tr><td>Choose PNG or JPG</td><td class="y uc">✓</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td></tr>
+      <tr><td>WebP → JPG/PNG conversion</td><td class="y uc">✓</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td></tr>
+      <tr><td>Zero data collected</td><td class="y uc">✓</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td></tr>
+      <tr><td>No login required</td><td class="y uc">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td>Simple one-click UX</td><td class="y uc">✓</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td></tr>
+      <tr><td>Free forever</td><td class="y uc">✓</td><td class="y">✓</td><td class="n">Freemium</td><td class="y">✓</td></tr>
+    </tbody>
+  </table>
+</div>
+</section>
+
+<!-- ALTERNATIVES -->
+<section class="sec" id="alternatives">
+<div class="inn">
+  <div class="s-tag">Alternatives</div>
+  <h2>Switching from<br/>another extension?</h2>
+  <p class="s-sub">Image Downloader is the simpler, cleaner, actively maintained replacement for any of these.</p>
+  <div class="alt-grid">
+    <div class="ac"><div class="a-tag">Alternative to</div><div class="a-name">Fatkun Batch Download</div><div class="a-why">Simpler — one image at a time, no bulk mode confusion</div></div>
+    <div class="ac"><div class="a-tag">Alternative to</div><div class="a-name">Imageye</div><div class="a-why">Faster — no grid UI, just right-click and done</div></div>
+    <div class="ac"><div class="a-tag">Alternative to</div><div class="a-name">Download All Images</div><div class="a-why">More precise — only the image you want</div></div>
+    <div class="ac"><div class="a-tag">Alternative to</div><div class="a-name">Image Downloader Pro</div><div class="a-why">Free forever — no paid tier, no upsells</div></div>
+    <div class="ac"><div class="a-tag">Alternative to</div><div class="a-name">Save Image As Type</div><div class="a-why">Friendlier — built for regular users, not developers</div></div>
+    <div class="ac"><div class="a-tag">Alternative to</div><div class="a-name">Picviewer CE+</div><div class="a-why">Lightweight — no feature bloat, instant load</div></div>
+    <div class="ac"><div class="a-tag">Alternative to</div><div class="a-name">ImgDownloader</div><div class="a-why">No website visit — works inline in any tab</div></div>
+    <div class="ac"><div class="a-tag">Alternative to</div><div class="a-name">Photo Downloader</div><div class="a-why">Format choice — saves as the format you want</div></div>
+    <div class="ac"><div class="a-tag">Alternative to</div><div class="a-name">Download Master</div><div class="a-why">Image-focused — not a generic download manager</div></div>
+    <div class="ac"><div class="a-tag">Alternative to</div><div class="a-name">Image Downloader Plus</div><div class="a-why">Actively maintained — working and updated in 2026</div></div>
+  </div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="sec faq-sec" id="faq">
+<div class="inn">
+  <div class="s-tag">FAQ</div>
+  <h2>Common questions</h2>
+  <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+
+    <div class="fi-wrap" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <button class="fq" aria-expanded="false"><span itemprop="name">How do I download an image as PNG or JPG in Chrome?</span><span class="fq-icon" aria-hidden="true">+</span></button>
+      <div class="fa" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">Install Image Downloader from the Chrome Web Store. Then right-click any image on any website and select "Download as PNG" or "Download as JPG". The image saves instantly to your Downloads folder — no extra steps needed.</span></div>
+    </div>
+
+    <div class="fi-wrap" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <button class="fq" aria-expanded="false"><span itemprop="name">How do I save a WebP image as JPG or PNG?</span><span class="fq-icon" aria-hidden="true">+</span></button>
+      <div class="fa" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">Many websites now serve images in WebP format which won't open in Photoshop, Word, or most phones. Image Downloader automatically converts any WebP image to JPG or PNG when you download it — right-click, pick your format, done.</span></div>
+    </div>
+
+    <div class="fi-wrap" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <button class="fq" aria-expanded="false"><span itemprop="name">Does it work on Google Images, Pinterest, and Instagram?</span><span class="fq-icon" aria-hidden="true">+</span></button>
+      <div class="fa" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">Yes. Image Downloader works on all websites — Google Images, Pinterest, Reddit, Instagram, Twitter/X, Unsplash, Amazon, Facebook, and any other site that displays images. If you can see it in Chrome, you can download it.</span></div>
+    </div>
+
+    <div class="fi-wrap" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <button class="fq" aria-expanded="false"><span itemprop="name">Is Image Downloader completely free?</span><span class="fq-icon" aria-hidden="true">+</span></button>
+      <div class="fa" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">Yes. Completely free. No premium tier, no subscription, no ads, no in-app purchases. Image Downloader is free forever.</span></div>
+    </div>
+
+    <div class="fi-wrap" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <button class="fq" aria-expanded="false"><span itemprop="name">Does it collect my browsing data or track me?</span><span class="fq-icon" aria-hidden="true">+</span></button>
+      <div class="fa" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">No. Image Downloader collects zero personal data. All image processing happens locally inside your browser. Nothing is sent to any server. No analytics, no tracking, no cookies. Your downloads are completely private.</span></div>
+    </div>
+
+    <div class="fi-wrap" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <button class="fq" aria-expanded="false"><span itemprop="name">What is the difference between PNG and JPG?</span><span class="fq-icon" aria-hidden="true">+</span></button>
+      <div class="fa" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">PNG is lossless and supports transparency — best for graphics, logos, and screenshots. JPG uses compression for smaller file sizes — best for photos. Image Downloader lets you pick whichever fits and handles the conversion automatically.</span></div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="install">
+  <h2>Start downloading images the right way</h2>
+  <p>Free. Private. One click. Works everywhere.</p>
+  <a href="https://chrome.google.com/webstore/detail/YOUR_EXTENSION_ID" class="btn-wh" target="_blank" rel="noopener">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 4v11M9 12l3 3 3-3" stroke="#FF6B00" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 19h14" stroke="#FF6B00" stroke-width="2.3" stroke-linecap="round"/></svg>
+    Add to Chrome — Free
+  </a>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Image Downloader · Built by <a href="#" rel="noopener">IndieEvolve</a></p>
+  <div class="f-links">
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="https://chrome.google.com/webstore/detail/YOUR_EXTENSION_ID" target="_blank" rel="noopener">Chrome Web Store</a>
+    <a href="mailto:your@email.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+// FAQ
+document.querySelectorAll('.fq').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.closest('.fi-wrap');
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.fi-wrap.open').forEach(i=>{i.classList.remove('open');i.querySelector('.fq').setAttribute('aria-expanded','false')});
+    if(!open){item.classList.add('open');btn.setAttribute('aria-expanded','true')}
+  });
+});
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}});
+},{threshold:.12});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
